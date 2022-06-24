@@ -9,7 +9,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
     
-    <link rel="preload" href="/assets/css/0.styles.032ce348.css" as="style"><link rel="preload" href="/assets/js/app.997e37cb.js" as="script"><link rel="preload" href="/assets/js/2.5c2f89f7.js" as="script"><link rel="preload" href="/assets/js/13.27f94e24.js" as="script"><link rel="prefetch" href="/assets/js/10.a1a58c08.js"><link rel="prefetch" href="/assets/js/11.5b3c3a12.js"><link rel="prefetch" href="/assets/js/12.b95d197d.js"><link rel="prefetch" href="/assets/js/14.c87ad05e.js"><link rel="prefetch" href="/assets/js/15.20996b6e.js"><link rel="prefetch" href="/assets/js/16.f09d0ba8.js"><link rel="prefetch" href="/assets/js/17.7f3e6e62.js"><link rel="prefetch" href="/assets/js/18.8097a5ef.js"><link rel="prefetch" href="/assets/js/19.1ae67b9a.js"><link rel="prefetch" href="/assets/js/3.6ec4a513.js"><link rel="prefetch" href="/assets/js/4.11dd4e91.js"><link rel="prefetch" href="/assets/js/5.cdd23b4b.js"><link rel="prefetch" href="/assets/js/6.65fd6cad.js"><link rel="prefetch" href="/assets/js/7.f45ba8eb.js"><link rel="prefetch" href="/assets/js/8.d250bb00.js"><link rel="prefetch" href="/assets/js/9.eca5208c.js">
+    <link rel="preload" href="/assets/css/0.styles.032ce348.css" as="style"><link rel="preload" href="/assets/js/app.5c514b9d.js" as="script"><link rel="preload" href="/assets/js/2.5c2f89f7.js" as="script"><link rel="preload" href="/assets/js/13.1f1914c2.js" as="script"><link rel="prefetch" href="/assets/js/10.3f95a921.js"><link rel="prefetch" href="/assets/js/11.36499721.js"><link rel="prefetch" href="/assets/js/12.b95d197d.js"><link rel="prefetch" href="/assets/js/14.c87ad05e.js"><link rel="prefetch" href="/assets/js/15.20996b6e.js"><link rel="prefetch" href="/assets/js/16.f09d0ba8.js"><link rel="prefetch" href="/assets/js/17.94a3b8de.js"><link rel="prefetch" href="/assets/js/18.0bc0c7d5.js"><link rel="prefetch" href="/assets/js/19.1ae67b9a.js"><link rel="prefetch" href="/assets/js/3.6ec4a513.js"><link rel="prefetch" href="/assets/js/4.11dd4e91.js"><link rel="prefetch" href="/assets/js/5.e02fc35f.js"><link rel="prefetch" href="/assets/js/6.8e22e756.js"><link rel="prefetch" href="/assets/js/7.fbbd7de3.js"><link rel="prefetch" href="/assets/js/8.d250bb00.js"><link rel="prefetch" href="/assets/js/9.02d4a437.js">
     <link rel="stylesheet" href="/assets/css/0.styles.032ce348.css">
   </head>
   <body>
@@ -61,7 +61,18 @@
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependencies</span><span class="token punctuation">&gt;</span></span>
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>project</span><span class="token punctuation">&gt;</span></span>
-</code></pre></div><h3 id="代码"><a href="#代码" class="header-anchor">#</a> 代码</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>bitaim<span class="token punctuation">.</span>study<span class="token punctuation">.</span>spring<span class="token punctuation">.</span>enums</span><span class="token punctuation">.</span><span class="token class-name">BizCode</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="代码"><a href="#代码" class="header-anchor">#</a> 代码</h3> <p>  注解 <strong>@NotBlank</strong>，用于String类型的字段上，不允许值为null，不允许值为空串。</p> <p>  注解 <strong>@NotEmpty</strong>，可用于String、Collection、数组，不允许值为null，不允许值的长度为0。</p> <p>  注解 <strong>@NotNull</strong>，不允许值为null。</p> <p>  注解 <strong>@Max和@Min</strong>，用于String、数字类型，指定值的数字范围。</p> <p>  注解 <strong>@Length(min=1, max=10)</strong>，指定值的字符串长度范围。</p> <p>  注解 <strong>@Size(min=1, max=10)和@NotNull</strong>，用于Collection、数组，指定值的长度范围。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">import</span> lombok<span class="token punctuation">.</span><span class="token class-name">Data</span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token namespace">javax<span class="token punctuation">.</span>validation<span class="token punctuation">.</span>constraints</span><span class="token punctuation">.</span><span class="token class-name">NotBlank</span><span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@Data</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@NotBlank</span><span class="token punctuation">(</span>message <span class="token operator">=</span> <span class="token string">&quot;用户名不能为空&quot;</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> <span class="token class-name">String</span> username<span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="使用方式一"><a href="#使用方式一" class="header-anchor">#</a> 使用方式一</h4> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>bitaim<span class="token punctuation">.</span>study<span class="token punctuation">.</span>spring<span class="token punctuation">.</span>enums</span><span class="token punctuation">.</span><span class="token class-name">BizCode</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>bitaim<span class="token punctuation">.</span>study<span class="token punctuation">.</span>spring<span class="token punctuation">.</span>exception</span><span class="token punctuation">.</span><span class="token class-name">BizException</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory</span><span class="token punctuation">.</span><span class="token class-name">InitializingBean</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype</span><span class="token punctuation">.</span><span class="token class-name">Component</span><span class="token punctuation">;</span>
@@ -100,18 +111,25 @@
     <span class="token punctuation">}</span>
 
 <span class="token punctuation">}</span>
-</code></pre></div><h3 id="单元测试"><a href="#单元测试" class="header-anchor">#</a> 单元测试</h3> <p>  类似 <strong>@NotBlank</strong> 用于参数校验的注解自行百度。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">import</span> lombok<span class="token punctuation">.</span><span class="token class-name">Data</span><span class="token punctuation">;</span>
+</code></pre></div><h4 id="使用方式二"><a href="#使用方式二" class="header-anchor">#</a> 使用方式二</h4> <p>  在类上添加 <strong>@Validated</strong> 注解，在方法的入参上添加 <strong>@Valid</strong>注解。</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">import</span> <span class="token namespace">com<span class="token punctuation">.</span>bitaim<span class="token punctuation">.</span>study<span class="token punctuation">.</span>spring<span class="token punctuation">.</span>vo</span><span class="token punctuation">.</span><span class="token class-name">User</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">lombok<span class="token punctuation">.</span>extern<span class="token punctuation">.</span>slf4j</span><span class="token punctuation">.</span><span class="token class-name">Slf4j</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>stereotype</span><span class="token punctuation">.</span><span class="token class-name">Service</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>validation<span class="token punctuation">.</span>annotation</span><span class="token punctuation">.</span><span class="token class-name">Validated</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token namespace">javax<span class="token punctuation">.</span>validation</span><span class="token punctuation">.</span><span class="token class-name">Valid</span><span class="token punctuation">;</span>
 
-<span class="token keyword">import</span> <span class="token namespace">javax<span class="token punctuation">.</span>validation<span class="token punctuation">.</span>constraints</span><span class="token punctuation">.</span><span class="token class-name">NotBlank</span><span class="token punctuation">;</span>
+<span class="token annotation punctuation">@Slf4j</span>
+<span class="token annotation punctuation">@Service</span>
+<span class="token annotation punctuation">@Validated</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DemoService</span> <span class="token punctuation">{</span>
 
-<span class="token annotation punctuation">@Data</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">{</span>
-
-    <span class="token annotation punctuation">@NotBlank</span><span class="token punctuation">(</span>message <span class="token operator">=</span> <span class="token string">&quot;用户名不能为空&quot;</span><span class="token punctuation">)</span>
-    <span class="token keyword">private</span> <span class="token class-name">String</span> username<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">checkParameter</span><span class="token punctuation">(</span><span class="token annotation punctuation">@Valid</span> <span class="token class-name">User</span> user<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
 <span class="token punctuation">}</span>
-</code></pre></div><div class="language-java extra-class"><pre class="language-java"><code><span class="token annotation punctuation">@RunWith</span><span class="token punctuation">(</span><span class="token class-name">SpringRunner</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
+
+</code></pre></div><h3 id="单元测试"><a href="#单元测试" class="header-anchor">#</a> 单元测试</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token annotation punctuation">@RunWith</span><span class="token punctuation">(</span><span class="token class-name">SpringRunner</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
 <span class="token annotation punctuation">@SpringBootTest</span><span class="token punctuation">(</span>classes <span class="token operator">=</span> <span class="token class-name">SpringDemoApplication</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ValidatorTest</span> <span class="token punctuation">{</span>
 
@@ -129,10 +147,17 @@
         
     <span class="token punctuation">}</span>
 
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test02</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">User</span> user <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">User</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        user<span class="token punctuation">.</span><span class="token function">setUsername</span><span class="token punctuation">(</span><span class="token string">&quot;&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        demoService<span class="token punctuation">.</span><span class="token function">checkParameter</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
 <span class="token punctuation">}</span>
-</code></pre></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新时间:</span> <span class="time">6/24/2022, 2:47:55 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+</code></pre></div></div> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新时间:</span> <span class="time">6/24/2022, 6:40:03 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
       ←
       <a href="/main/项目/Spring/03_切面.html" class="prev">切面</a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
-    <script src="/assets/js/app.997e37cb.js" defer></script><script src="/assets/js/2.5c2f89f7.js" defer></script><script src="/assets/js/13.27f94e24.js" defer></script>
+    <script src="/assets/js/app.5c514b9d.js" defer></script><script src="/assets/js/2.5c2f89f7.js" defer></script><script src="/assets/js/13.1f1914c2.js" defer></script>
   </body>
 </html>
