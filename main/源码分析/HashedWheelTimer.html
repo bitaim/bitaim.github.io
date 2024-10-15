@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>HashedWheelTimer | 山  海</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.2/jquery.fancybox.min.css">
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/assets/css/0.styles.d03ec7b8.css" as="style"><link rel="preload" href="/assets/js/app.9dffee2a.js" as="script"><link rel="preload" href="/assets/js/2.63a1ef1f.js" as="script"><link rel="preload" href="/assets/js/1.0f3fe6d1.js" as="script"><link rel="preload" href="/assets/js/83.60b8c351.js" as="script"><link rel="prefetch" href="/assets/js/10.44262252.js"><link rel="prefetch" href="/assets/js/100.3a771994.js"><link rel="prefetch" href="/assets/js/101.ea96f282.js"><link rel="prefetch" href="/assets/js/102.5d0ca223.js"><link rel="prefetch" href="/assets/js/103.82a70c48.js"><link rel="prefetch" href="/assets/js/104.c431ce37.js"><link rel="prefetch" href="/assets/js/105.5c3084af.js"><link rel="prefetch" href="/assets/js/106.67cb1387.js"><link rel="prefetch" href="/assets/js/107.65ae3103.js"><link rel="prefetch" href="/assets/js/108.28946430.js"><link rel="prefetch" href="/assets/js/109.78878e4c.js"><link rel="prefetch" href="/assets/js/11.39ccc40f.js"><link rel="prefetch" href="/assets/js/110.88d09e00.js"><link rel="prefetch" href="/assets/js/111.5aa28d4f.js"><link rel="prefetch" href="/assets/js/112.df325062.js"><link rel="prefetch" href="/assets/js/113.18a7463c.js"><link rel="prefetch" href="/assets/js/114.7e9fd7b2.js"><link rel="prefetch" href="/assets/js/115.8b77fe64.js"><link rel="prefetch" href="/assets/js/116.bdf08f92.js"><link rel="prefetch" href="/assets/js/117.12b527d8.js"><link rel="prefetch" href="/assets/js/118.9bfc8819.js"><link rel="prefetch" href="/assets/js/119.3df227f8.js"><link rel="prefetch" href="/assets/js/12.63ad97b6.js"><link rel="prefetch" href="/assets/js/120.102a804b.js"><link rel="prefetch" href="/assets/js/121.746da939.js"><link rel="prefetch" href="/assets/js/122.eed9a72a.js"><link rel="prefetch" href="/assets/js/123.f6216b03.js"><link rel="prefetch" href="/assets/js/124.ffde0300.js"><link rel="prefetch" href="/assets/js/125.c880379f.js"><link rel="prefetch" href="/assets/js/126.248db0e2.js"><link rel="prefetch" href="/assets/js/127.85ce0ffc.js"><link rel="prefetch" href="/assets/js/128.d98b4414.js"><link rel="prefetch" href="/assets/js/129.97b6e531.js"><link rel="prefetch" href="/assets/js/13.91381ba5.js"><link rel="prefetch" href="/assets/js/130.97d58cf8.js"><link rel="prefetch" href="/assets/js/131.9c322493.js"><link rel="prefetch" href="/assets/js/132.18454141.js"><link rel="prefetch" href="/assets/js/133.9eb30878.js"><link rel="prefetch" href="/assets/js/134.3594be96.js"><link rel="prefetch" href="/assets/js/135.7d4528c5.js"><link rel="prefetch" href="/assets/js/136.4425593b.js"><link rel="prefetch" href="/assets/js/137.da9f6889.js"><link rel="prefetch" href="/assets/js/138.123d5c87.js"><link rel="prefetch" href="/assets/js/139.12925768.js"><link rel="prefetch" href="/assets/js/14.4fe22967.js"><link rel="prefetch" href="/assets/js/140.fedfb814.js"><link rel="prefetch" href="/assets/js/141.a35894a6.js"><link rel="prefetch" href="/assets/js/142.0c0f7c88.js"><link rel="prefetch" href="/assets/js/143.b9da4004.js"><link rel="prefetch" href="/assets/js/144.9ffbd482.js"><link rel="prefetch" href="/assets/js/145.588a166c.js"><link rel="prefetch" href="/assets/js/146.81953ea6.js"><link rel="prefetch" href="/assets/js/147.8f77089f.js"><link rel="prefetch" href="/assets/js/148.01ef2f4a.js"><link rel="prefetch" href="/assets/js/149.553242f4.js"><link rel="prefetch" href="/assets/js/15.36673d63.js"><link rel="prefetch" href="/assets/js/150.ed8cb86f.js"><link rel="prefetch" href="/assets/js/151.b4c4439e.js"><link rel="prefetch" href="/assets/js/152.4d40f835.js"><link rel="prefetch" href="/assets/js/153.b5d371cc.js"><link rel="prefetch" href="/assets/js/154.b051d236.js"><link rel="prefetch" href="/assets/js/155.206c4cd2.js"><link rel="prefetch" href="/assets/js/156.69789d46.js"><link rel="prefetch" href="/assets/js/157.3b9828c5.js"><link rel="prefetch" href="/assets/js/158.4fe133de.js"><link rel="prefetch" href="/assets/js/159.20c781a7.js"><link rel="prefetch" href="/assets/js/16.ed895798.js"><link rel="prefetch" href="/assets/js/160.d62f63ba.js"><link rel="prefetch" href="/assets/js/161.af67be75.js"><link rel="prefetch" href="/assets/js/162.dae62c03.js"><link rel="prefetch" href="/assets/js/163.997054b6.js"><link rel="prefetch" href="/assets/js/164.02a7a026.js"><link rel="prefetch" href="/assets/js/165.cf7efb48.js"><link rel="prefetch" href="/assets/js/166.b36924d4.js"><link rel="prefetch" href="/assets/js/167.e261f9c5.js"><link rel="prefetch" href="/assets/js/168.76d147c1.js"><link rel="prefetch" href="/assets/js/169.daacd125.js"><link rel="prefetch" href="/assets/js/17.f9f1454b.js"><link rel="prefetch" href="/assets/js/170.e71de3f8.js"><link rel="prefetch" href="/assets/js/171.51b8089f.js"><link rel="prefetch" href="/assets/js/172.01c4d72c.js"><link rel="prefetch" href="/assets/js/173.bc52cacd.js"><link rel="prefetch" href="/assets/js/174.f9a89a0b.js"><link rel="prefetch" href="/assets/js/175.d674196a.js"><link rel="prefetch" href="/assets/js/176.5c13800c.js"><link rel="prefetch" href="/assets/js/177.8d4adf85.js"><link rel="prefetch" href="/assets/js/178.dc6e1371.js"><link rel="prefetch" href="/assets/js/179.7542ed9d.js"><link rel="prefetch" href="/assets/js/18.8dd462ae.js"><link rel="prefetch" href="/assets/js/180.109ba6b5.js"><link rel="prefetch" href="/assets/js/181.da57e3e6.js"><link rel="prefetch" href="/assets/js/182.a38aaa00.js"><link rel="prefetch" href="/assets/js/183.138238e7.js"><link rel="prefetch" href="/assets/js/184.906d7e91.js"><link rel="prefetch" href="/assets/js/185.226cbf5f.js"><link rel="prefetch" href="/assets/js/186.bbd74c9b.js"><link rel="prefetch" href="/assets/js/187.4d35a170.js"><link rel="prefetch" href="/assets/js/188.892060d3.js"><link rel="prefetch" href="/assets/js/189.2ee2bde9.js"><link rel="prefetch" href="/assets/js/19.546b3e23.js"><link rel="prefetch" href="/assets/js/190.57d1e6a0.js"><link rel="prefetch" href="/assets/js/191.f74f9a95.js"><link rel="prefetch" href="/assets/js/192.f25ede5f.js"><link rel="prefetch" href="/assets/js/193.f9192dec.js"><link rel="prefetch" href="/assets/js/194.ce187b0c.js"><link rel="prefetch" href="/assets/js/195.be451b94.js"><link rel="prefetch" href="/assets/js/196.5390cb43.js"><link rel="prefetch" href="/assets/js/197.da2d2986.js"><link rel="prefetch" href="/assets/js/198.82714d25.js"><link rel="prefetch" href="/assets/js/199.2819b5c6.js"><link rel="prefetch" href="/assets/js/20.16d52dd0.js"><link rel="prefetch" href="/assets/js/200.a5e0d84d.js"><link rel="prefetch" href="/assets/js/201.d68a8743.js"><link rel="prefetch" href="/assets/js/202.8c8d0e62.js"><link rel="prefetch" href="/assets/js/203.aa8caa6e.js"><link rel="prefetch" href="/assets/js/204.70b17212.js"><link rel="prefetch" href="/assets/js/205.b2c30d21.js"><link rel="prefetch" href="/assets/js/206.b42deb56.js"><link rel="prefetch" href="/assets/js/207.38952406.js"><link rel="prefetch" href="/assets/js/208.2998a8d1.js"><link rel="prefetch" href="/assets/js/209.00eb5e84.js"><link rel="prefetch" href="/assets/js/21.cccb9dc7.js"><link rel="prefetch" href="/assets/js/210.2e789253.js"><link rel="prefetch" href="/assets/js/211.0986bfeb.js"><link rel="prefetch" href="/assets/js/212.8bfbe554.js"><link rel="prefetch" href="/assets/js/213.5e033b1f.js"><link rel="prefetch" href="/assets/js/214.2d309ecf.js"><link rel="prefetch" href="/assets/js/215.6b6e965f.js"><link rel="prefetch" href="/assets/js/216.813cde06.js"><link rel="prefetch" href="/assets/js/217.c9c61538.js"><link rel="prefetch" href="/assets/js/218.ede6a8a7.js"><link rel="prefetch" href="/assets/js/219.c10acf82.js"><link rel="prefetch" href="/assets/js/22.b817a4c1.js"><link rel="prefetch" href="/assets/js/220.ed3f3730.js"><link rel="prefetch" href="/assets/js/221.c8d1a8e2.js"><link rel="prefetch" href="/assets/js/222.809ce978.js"><link rel="prefetch" href="/assets/js/223.430b7354.js"><link rel="prefetch" href="/assets/js/224.91a16a23.js"><link rel="prefetch" href="/assets/js/225.b2fcd2f7.js"><link rel="prefetch" href="/assets/js/226.4d331c0e.js"><link rel="prefetch" href="/assets/js/227.e163575e.js"><link rel="prefetch" href="/assets/js/228.61397f57.js"><link rel="prefetch" href="/assets/js/229.6f750044.js"><link rel="prefetch" href="/assets/js/23.1c737c60.js"><link rel="prefetch" href="/assets/js/230.3e5b91fa.js"><link rel="prefetch" href="/assets/js/231.e1b266fa.js"><link rel="prefetch" href="/assets/js/232.a87eae7e.js"><link rel="prefetch" href="/assets/js/233.85e835ef.js"><link rel="prefetch" href="/assets/js/234.d975ff08.js"><link rel="prefetch" href="/assets/js/235.0892213c.js"><link rel="prefetch" href="/assets/js/236.744f0fad.js"><link rel="prefetch" href="/assets/js/237.cb2ee688.js"><link rel="prefetch" href="/assets/js/238.1b194c4e.js"><link rel="prefetch" href="/assets/js/239.83372b42.js"><link rel="prefetch" href="/assets/js/24.98d506b6.js"><link rel="prefetch" href="/assets/js/240.42f2b5a0.js"><link rel="prefetch" href="/assets/js/241.295c2d92.js"><link rel="prefetch" href="/assets/js/242.365e2656.js"><link rel="prefetch" href="/assets/js/243.7e4d8a72.js"><link rel="prefetch" href="/assets/js/244.f07f3980.js"><link rel="prefetch" href="/assets/js/245.d1655c89.js"><link rel="prefetch" href="/assets/js/246.21442a63.js"><link rel="prefetch" href="/assets/js/247.390c7cd7.js"><link rel="prefetch" href="/assets/js/248.5c585fd5.js"><link rel="prefetch" href="/assets/js/249.6bb907f9.js"><link rel="prefetch" href="/assets/js/25.c2ca17e3.js"><link rel="prefetch" href="/assets/js/250.638bfbb1.js"><link rel="prefetch" href="/assets/js/251.5f82b721.js"><link rel="prefetch" href="/assets/js/252.fa041190.js"><link rel="prefetch" href="/assets/js/253.a65efa3c.js"><link rel="prefetch" href="/assets/js/254.aa5d37b5.js"><link rel="prefetch" href="/assets/js/255.e6c0251e.js"><link rel="prefetch" href="/assets/js/256.f7e3cc5b.js"><link rel="prefetch" href="/assets/js/257.66eca0c3.js"><link rel="prefetch" href="/assets/js/258.4c94d4fd.js"><link rel="prefetch" href="/assets/js/259.18e593e0.js"><link rel="prefetch" href="/assets/js/26.0396f806.js"><link rel="prefetch" href="/assets/js/260.ef68f5f3.js"><link rel="prefetch" href="/assets/js/261.fd43133a.js"><link rel="prefetch" href="/assets/js/262.d21e479f.js"><link rel="prefetch" href="/assets/js/263.e371a017.js"><link rel="prefetch" href="/assets/js/264.82da6ce0.js"><link rel="prefetch" href="/assets/js/265.165c353f.js"><link rel="prefetch" href="/assets/js/266.f8b440aa.js"><link rel="prefetch" href="/assets/js/267.31364686.js"><link rel="prefetch" href="/assets/js/268.175f5bf0.js"><link rel="prefetch" href="/assets/js/269.d21170f8.js"><link rel="prefetch" href="/assets/js/27.e98581c3.js"><link rel="prefetch" href="/assets/js/270.11ff6fdd.js"><link rel="prefetch" href="/assets/js/271.6ebf0b1b.js"><link rel="prefetch" href="/assets/js/272.289d98d5.js"><link rel="prefetch" href="/assets/js/273.66fb399d.js"><link rel="prefetch" href="/assets/js/274.fa8be1a5.js"><link rel="prefetch" href="/assets/js/275.2a5edc1e.js"><link rel="prefetch" href="/assets/js/276.9955f4b2.js"><link rel="prefetch" href="/assets/js/277.7ebdf3e1.js"><link rel="prefetch" href="/assets/js/278.09d5d34c.js"><link rel="prefetch" href="/assets/js/279.26443ac1.js"><link rel="prefetch" href="/assets/js/28.36a1abbe.js"><link rel="prefetch" href="/assets/js/280.497612c2.js"><link rel="prefetch" href="/assets/js/281.6d1f084e.js"><link rel="prefetch" href="/assets/js/282.91582b0d.js"><link rel="prefetch" href="/assets/js/283.37b6da90.js"><link rel="prefetch" href="/assets/js/284.32329afa.js"><link rel="prefetch" href="/assets/js/285.7fae45e8.js"><link rel="prefetch" href="/assets/js/29.d36a489e.js"><link rel="prefetch" href="/assets/js/3.73e292aa.js"><link rel="prefetch" href="/assets/js/30.438dce5a.js"><link rel="prefetch" href="/assets/js/31.70bad7b5.js"><link rel="prefetch" href="/assets/js/32.476046fd.js"><link rel="prefetch" href="/assets/js/33.eb97c134.js"><link rel="prefetch" href="/assets/js/34.21c46de7.js"><link rel="prefetch" href="/assets/js/35.7c187034.js"><link rel="prefetch" href="/assets/js/36.436e80e1.js"><link rel="prefetch" href="/assets/js/37.3d8d2d7c.js"><link rel="prefetch" href="/assets/js/38.b6e35a64.js"><link rel="prefetch" href="/assets/js/39.9ef7afcf.js"><link rel="prefetch" href="/assets/js/4.0146e7cc.js"><link rel="prefetch" href="/assets/js/40.998b819e.js"><link rel="prefetch" href="/assets/js/41.e0530af4.js"><link rel="prefetch" href="/assets/js/42.3f5ed9db.js"><link rel="prefetch" href="/assets/js/43.cb7ee812.js"><link rel="prefetch" href="/assets/js/44.370fbf2a.js"><link rel="prefetch" href="/assets/js/45.ecaac305.js"><link rel="prefetch" href="/assets/js/46.3a3461dc.js"><link rel="prefetch" href="/assets/js/47.dd5b95f9.js"><link rel="prefetch" href="/assets/js/48.4e900ef7.js"><link rel="prefetch" href="/assets/js/49.93a87fd5.js"><link rel="prefetch" href="/assets/js/5.05503564.js"><link rel="prefetch" href="/assets/js/50.553bad4b.js"><link rel="prefetch" href="/assets/js/51.054e5ec6.js"><link rel="prefetch" href="/assets/js/52.5796c84a.js"><link rel="prefetch" href="/assets/js/53.eb7abd30.js"><link rel="prefetch" href="/assets/js/54.9060c891.js"><link rel="prefetch" href="/assets/js/55.aed295dc.js"><link rel="prefetch" href="/assets/js/56.d533ee21.js"><link rel="prefetch" href="/assets/js/57.f95419db.js"><link rel="prefetch" href="/assets/js/58.837417a2.js"><link rel="prefetch" href="/assets/js/59.e567df66.js"><link rel="prefetch" href="/assets/js/6.0bcdceae.js"><link rel="prefetch" href="/assets/js/60.eb7245e5.js"><link rel="prefetch" href="/assets/js/61.cc1379bf.js"><link rel="prefetch" href="/assets/js/62.e55b08bf.js"><link rel="prefetch" href="/assets/js/63.0acce837.js"><link rel="prefetch" href="/assets/js/64.96dadf0c.js"><link rel="prefetch" href="/assets/js/65.d64c1138.js"><link rel="prefetch" href="/assets/js/66.ae561c84.js"><link rel="prefetch" href="/assets/js/67.f3245e30.js"><link rel="prefetch" href="/assets/js/68.ff7dfc9e.js"><link rel="prefetch" href="/assets/js/69.e5497422.js"><link rel="prefetch" href="/assets/js/7.995b010c.js"><link rel="prefetch" href="/assets/js/70.d7903fea.js"><link rel="prefetch" href="/assets/js/71.6f6d6bdb.js"><link rel="prefetch" href="/assets/js/72.7f441de8.js"><link rel="prefetch" href="/assets/js/73.0ced2b84.js"><link rel="prefetch" href="/assets/js/74.06a7f7a6.js"><link rel="prefetch" href="/assets/js/75.4f169431.js"><link rel="prefetch" href="/assets/js/76.bb447a44.js"><link rel="prefetch" href="/assets/js/77.9fdc0082.js"><link rel="prefetch" href="/assets/js/78.31b2aef8.js"><link rel="prefetch" href="/assets/js/79.ce63ac82.js"><link rel="prefetch" href="/assets/js/80.05d0609c.js"><link rel="prefetch" href="/assets/js/81.8dd956d0.js"><link rel="prefetch" href="/assets/js/82.b9525277.js"><link rel="prefetch" href="/assets/js/84.a3dfbce8.js"><link rel="prefetch" href="/assets/js/85.68e5d3f1.js"><link rel="prefetch" href="/assets/js/86.f95d512a.js"><link rel="prefetch" href="/assets/js/87.5efb59af.js"><link rel="prefetch" href="/assets/js/88.b0ff24b9.js"><link rel="prefetch" href="/assets/js/89.f6aa2cdd.js"><link rel="prefetch" href="/assets/js/90.330e84c9.js"><link rel="prefetch" href="/assets/js/91.5f3d17ec.js"><link rel="prefetch" href="/assets/js/92.a2df6dd8.js"><link rel="prefetch" href="/assets/js/93.b64f59ee.js"><link rel="prefetch" href="/assets/js/94.3d9cf066.js"><link rel="prefetch" href="/assets/js/95.f9627574.js"><link rel="prefetch" href="/assets/js/96.0a323786.js"><link rel="prefetch" href="/assets/js/97.2bad1a02.js"><link rel="prefetch" href="/assets/js/98.8c6dbc5c.js"><link rel="prefetch" href="/assets/js/99.410a167d.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.8b826ef6.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.d03ec7b8.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">山  海</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/main/随手记/" class="nav-link">
+  随手记
+</a></div><div class="nav-item"><a href="/main/笔记/" class="nav-link">
+  笔记
+</a></div><div class="nav-item"><a href="/main/实战/" class="nav-link">
+  实战
+</a></div><div class="nav-item"><a href="/main/项目/" class="nav-link">
+  项目
+</a></div><div class="nav-item"><a href="/main/源码分析/" class="nav-link">
+  源码分析
+</a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/main/随手记/" class="nav-link">
+  随手记
+</a></div><div class="nav-item"><a href="/main/笔记/" class="nav-link">
+  笔记
+</a></div><div class="nav-item"><a href="/main/实战/" class="nav-link">
+  实战
+</a></div><div class="nav-item"><a href="/main/项目/" class="nav-link">
+  项目
+</a></div><div class="nav-item"><a href="/main/源码分析/" class="nav-link">
+  源码分析
+</a></div> <!----></nav>  <ul class="sidebar-links"><li><a href="/main/源码分析/HashedWheelTimer.html" class="active sidebar-link">HashedWheelTimer</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/main/源码分析/SlidingTimeWindowMetrics.html" class="sidebar-link">SlidingTimeWindowMetrics</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="hashedwheeltimer"><a href="#hashedwheeltimer" class="header-anchor">#</a> HashedWheelTimer</h1> <p>  HashedWheelTimer是Netty框架中的时间轮组件。</p> <h3 id="快速开始"><a href="#快速开始" class="header-anchor">#</a> 快速开始</h3> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">import</span> <span class="token import"><span class="token namespace">io<span class="token punctuation">.</span>netty<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">HashedWheelTimer</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">io<span class="token punctuation">.</span>netty<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Timeout</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">io<span class="token punctuation">.</span>netty<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">TimerTask</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Set</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>concurrent<span class="token punctuation">.</span></span><span class="token class-name">TimeUnit</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HashedWheelTimerDemo</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">/**
+     * tickDuration：每个刻度的时间
+     * unit：每个刻度的时间单位
+     * ticksPerWheel：时间轮中刻度的数量，内部会将值向上转换为2的n次方, 10-&gt;16
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token class-name">HashedWheelTimer</span> timer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashedWheelTimer</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token class-name">TimeUnit</span><span class="token punctuation">.</span><span class="token constant">SECONDS</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token class-name">TimerTask</span> task <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TimerTask</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token annotation punctuation">@Override</span>
+            <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token class-name">Timeout</span> timeout<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">Exception</span> <span class="token punctuation">{</span>
+                <span class="token comment">// 任务执行应该单独开一个线程池，否则可能会导致时间轮延时异常</span>
+                <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;任务开始执行&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">500</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;任务结束执行&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 添加5秒钟的延时任务</span>
+        <span class="token class-name">Timeout</span> timeout <span class="token operator">=</span> timer<span class="token punctuation">.</span><span class="token function">newTimeout</span><span class="token punctuation">(</span>task<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token class-name">TimeUnit</span><span class="token punctuation">.</span><span class="token constant">SECONDS</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 取消延时任务(不需要在具体的任务中判断任务状态, 任务被取消时时间轮不会调度该任务)</span>
+        timeout<span class="token punctuation">.</span><span class="token function">cancel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 停止时间轮, 返回未处理的非取消状态的任务</span>
+        <span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Timeout</span><span class="token punctuation">&gt;</span></span> unprocessedTasks <span class="token operator">=</span> timer<span class="token punctuation">.</span><span class="token function">stop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="源码分析"><a href="#源码分析" class="header-anchor">#</a> 源码分析</h3> <h4 id="构造方法"><a href="#构造方法" class="header-anchor">#</a> 构造方法</h4> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token class-name">HashedWheelTimer</span><span class="token punctuation">(</span>
+        <span class="token class-name">ThreadFactory</span> threadFactory<span class="token punctuation">,</span>
+        <span class="token keyword">long</span> tickDuration<span class="token punctuation">,</span> <span class="token class-name">TimeUnit</span> unit<span class="token punctuation">,</span> <span class="token keyword">int</span> ticksPerWheel<span class="token punctuation">,</span> <span class="token keyword">boolean</span> leakDetection<span class="token punctuation">,</span>
+        <span class="token keyword">long</span> maxPendingTimeouts<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token class-name">ObjectUtil</span><span class="token punctuation">.</span><span class="token function">checkNotNull</span><span class="token punctuation">(</span>threadFactory<span class="token punctuation">,</span> <span class="token string">&quot;threadFactory&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">ObjectUtil</span><span class="token punctuation">.</span><span class="token function">checkNotNull</span><span class="token punctuation">(</span>unit<span class="token punctuation">,</span> <span class="token string">&quot;unit&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">ObjectUtil</span><span class="token punctuation">.</span><span class="token function">checkPositive</span><span class="token punctuation">(</span>tickDuration<span class="token punctuation">,</span> <span class="token string">&quot;tickDuration&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">ObjectUtil</span><span class="token punctuation">.</span><span class="token function">checkPositive</span><span class="token punctuation">(</span>ticksPerWheel<span class="token punctuation">,</span> <span class="token string">&quot;ticksPerWheel&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Normalize ticksPerWheel to power of two and initialize the wheel.</span>
+    <span class="token comment">// 时间轮大小 转换成 2的n次方，并创建时间轮</span>
+    wheel <span class="token operator">=</span> <span class="token function">createWheel</span><span class="token punctuation">(</span>ticksPerWheel<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 时间轮大小-1 方便后面进行与运算计算下标</span>
+    mask <span class="token operator">=</span> wheel<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Convert tickDuration to nanos.</span>
+    <span class="token keyword">long</span> duration <span class="token operator">=</span> unit<span class="token punctuation">.</span><span class="token function">toNanos</span><span class="token punctuation">(</span>tickDuration<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Prevent overflow.</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>duration <span class="token operator">&gt;=</span> <span class="token class-name">Long</span><span class="token punctuation">.</span><span class="token constant">MAX_VALUE</span> <span class="token operator">/</span> wheel<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalArgumentException</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span>
+                <span class="token string">&quot;tickDuration: %d (expected: 0 &lt; tickDuration in nanos &lt; %d&quot;</span><span class="token punctuation">,</span>
+                tickDuration<span class="token punctuation">,</span> <span class="token class-name">Long</span><span class="token punctuation">.</span><span class="token constant">MAX_VALUE</span> <span class="token operator">/</span> wheel<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>duration <span class="token operator">&lt;</span> <span class="token constant">MILLISECOND_NANOS</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        logger<span class="token punctuation">.</span><span class="token function">warn</span><span class="token punctuation">(</span><span class="token string">&quot;Configured tickDuration {} smaller then {}, using 1ms.&quot;</span><span class="token punctuation">,</span>
+                    tickDuration<span class="token punctuation">,</span> <span class="token constant">MILLISECOND_NANOS</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>tickDuration <span class="token operator">=</span> <span class="token constant">MILLISECOND_NANOS</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>tickDuration <span class="token operator">=</span> duration<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 创建工作线程， 该线程负责时间轮刻度流转和到期任务的执行</span>
+    workerThread <span class="token operator">=</span> threadFactory<span class="token punctuation">.</span><span class="token function">newThread</span><span class="token punctuation">(</span>worker<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    leak <span class="token operator">=</span> leakDetection <span class="token operator">||</span> <span class="token operator">!</span>workerThread<span class="token punctuation">.</span><span class="token function">isDaemon</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">?</span> leakDetector<span class="token punctuation">.</span><span class="token function">track</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 延时任务数量上限值，默认为-1不限制</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>maxPendingTimeouts <span class="token operator">=</span> maxPendingTimeouts<span class="token punctuation">;</span>
+
+    <span class="token comment">// 校验时间轮数量是否超过上限</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token constant">INSTANCE_COUNTER</span><span class="token punctuation">.</span><span class="token function">incrementAndGet</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token constant">INSTANCE_COUNT_LIMIT</span> <span class="token operator">&amp;&amp;</span>
+        <span class="token constant">WARNED_TOO_MANY_INSTANCES</span><span class="token punctuation">.</span><span class="token function">compareAndSet</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">reportTooManyInstances</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="添加任务"><a href="#添加任务" class="header-anchor">#</a> 添加任务</h4> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">public</span> <span class="token class-name">Timeout</span> <span class="token function">newTimeout</span><span class="token punctuation">(</span><span class="token class-name">TimerTask</span> task<span class="token punctuation">,</span> <span class="token keyword">long</span> delay<span class="token punctuation">,</span> <span class="token class-name">TimeUnit</span> unit<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token class-name">ObjectUtil</span><span class="token punctuation">.</span><span class="token function">checkNotNull</span><span class="token punctuation">(</span>task<span class="token punctuation">,</span> <span class="token string">&quot;task&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">ObjectUtil</span><span class="token punctuation">.</span><span class="token function">checkNotNull</span><span class="token punctuation">(</span>unit<span class="token punctuation">,</span> <span class="token string">&quot;unit&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 延时任务数量加1</span>
+    <span class="token keyword">long</span> pendingTimeoutsCount <span class="token operator">=</span> pendingTimeouts<span class="token punctuation">.</span><span class="token function">incrementAndGet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 判断延时任务数量是否超过上限， maxPendingTimeouts默认为-1，不进入校验逻辑</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>maxPendingTimeouts <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> pendingTimeoutsCount <span class="token operator">&gt;</span> maxPendingTimeouts<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        pendingTimeouts<span class="token punctuation">.</span><span class="token function">decrementAndGet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">RejectedExecutionException</span><span class="token punctuation">(</span><span class="token string">&quot;Number of pending timeouts (&quot;</span>
+            <span class="token operator">+</span> pendingTimeoutsCount <span class="token operator">+</span> <span class="token string">&quot;) is greater than or equal to maximum allowed pending &quot;</span>
+            <span class="token operator">+</span> <span class="token string">&quot;timeouts (&quot;</span> <span class="token operator">+</span> maxPendingTimeouts <span class="token operator">+</span> <span class="token string">&quot;)&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 时间轮工作线程开启</span>
+    <span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// Add the timeout to the timeout queue which will be processed on the next tick.</span>
+    <span class="token comment">// During processing all the queued HashedWheelTimeouts will be added to the correct HashedWheelBucket.</span>
+    <span class="token comment">// 计算当前延时任务到期时间</span>
+    <span class="token keyword">long</span> deadline <span class="token operator">=</span> <span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">nanoTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> unit<span class="token punctuation">.</span><span class="token function">toNanos</span><span class="token punctuation">(</span>delay<span class="token punctuation">)</span> <span class="token operator">-</span> startTime<span class="token punctuation">;</span>
+
+    <span class="token comment">// Guard against overflow.</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>delay <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> deadline <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        deadline <span class="token operator">=</span> <span class="token class-name">Long</span><span class="token punctuation">.</span><span class="token constant">MAX_VALUE</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 延时任务添加到阻塞队列中，并没有直接放入时间轮对应的桶中</span>
+    <span class="token class-name">HashedWheelTimeout</span> timeout <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashedWheelTimeout</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> task<span class="token punctuation">,</span> deadline<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    timeouts<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>timeout<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> timeout<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 判断工作线程状态</span>
+    <span class="token keyword">switch</span> <span class="token punctuation">(</span><span class="token constant">WORKER_STATE_UPDATER</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 如果是初始化状态，通过cas修改状态为开启，执行Worker线程</span>
+        <span class="token keyword">case</span> <span class="token constant">WORKER_STATE_INIT</span><span class="token operator">:</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token constant">WORKER_STATE_UPDATER</span><span class="token punctuation">.</span><span class="token function">compareAndSet</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token constant">WORKER_STATE_INIT</span><span class="token punctuation">,</span> <span class="token constant">WORKER_STATE_STARTED</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                workerThread<span class="token punctuation">.</span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token comment">// 如果开启状态，直接跳过</span>
+        <span class="token keyword">case</span> <span class="token constant">WORKER_STATE_STARTED</span><span class="token operator">:</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token comment">// 如果关闭状态，抛出异常</span>
+        <span class="token keyword">case</span> <span class="token constant">WORKER_STATE_SHUTDOWN</span><span class="token operator">:</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalStateException</span><span class="token punctuation">(</span><span class="token string">&quot;cannot be started once stopped&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">default</span><span class="token operator">:</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">&quot;Invalid WorkerState&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// Wait until the startTime is initialized by the worker.</span>
+    <span class="token comment">// 等待工作线程初始化 时间轮开始时刻（内部判断任务到期使用的是相对时间，所以需要记录开始时刻）</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>startTime <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            <span class="token comment">// 进入阻塞状态</span>
+            startTimeInitialized<span class="token punctuation">.</span><span class="token function">await</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> ignore<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// Ignore - it will be ready very soon.</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="工作线程worker"><a href="#工作线程worker" class="header-anchor">#</a> 工作线程Worker</h4> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">Worker</span> <span class="token keyword">implements</span> <span class="token class-name">Runnable</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Timeout</span><span class="token punctuation">&gt;</span></span> unprocessedTimeouts <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashSet</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Timeout</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">long</span> tick<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// Initialize the startTime.</span>
+        <span class="token comment">// 初始化 开始时刻</span>
+        startTime <span class="token operator">=</span> <span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">nanoTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>startTime <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// We use 0 as an indicator for the uninitialized value here, so make sure it's not 0 when initialized.</span>
+            startTime <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">// Notify the other threads waiting for the initialization at start().</span>
+        <span class="token comment">// 唤醒阻塞的线程</span>
+        startTimeInitialized<span class="token punctuation">.</span><span class="token function">countDown</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">do</span> <span class="token punctuation">{</span>
+            <span class="token comment">// 进入下一个刻度，返回的是 已经过去的时刻</span>
+            <span class="token keyword">final</span> <span class="token keyword">long</span> deadline <span class="token operator">=</span> <span class="token function">waitForNextTick</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>deadline <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment">// 计算时间轮桶的下标</span>
+                <span class="token keyword">int</span> idx <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>tick <span class="token operator">&amp;</span> mask<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment">// 处理取消的任务</span>
+                <span class="token function">processCancelledTasks</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment">// 获取当前时间轮桶</span>
+                <span class="token class-name">HashedWheelBucket</span> bucket <span class="token operator">=</span>
+                        wheel<span class="token punctuation">[</span>idx<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token comment">// 将未处理的任务转移到桶中</span>
+                <span class="token function">transferTimeoutsToBuckets</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment">// 判断任务是否到期</span>
+                bucket<span class="token punctuation">.</span><span class="token function">expireTimeouts</span><span class="token punctuation">(</span>deadline<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment">// 下标增加（注意下标是一直递增的）</span>
+                tick<span class="token operator">++</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span> <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token constant">WORKER_STATE_UPDATER</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token class-name">HashedWheelTimer</span><span class="token punctuation">.</span><span class="token keyword">this</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token constant">WORKER_STATE_STARTED</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 到这里的逻辑就是时间轮关闭时，跳出上面的循环</span>
+        <span class="token comment">// Fill the unprocessedTimeouts so we can return them from stop() method.</span>
+        
+        <span class="token comment">// 遍历桶，将桶中的任务放入 unprocessedTimeouts</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">HashedWheelBucket</span> bucket<span class="token operator">:</span> wheel<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            bucket<span class="token punctuation">.</span><span class="token function">clearTimeouts</span><span class="token punctuation">(</span>unprocessedTimeouts<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment">// 将未处理的任务放入 unprocessedTimeouts</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token punctuation">;</span><span class="token punctuation">;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">HashedWheelTimeout</span> timeout <span class="token operator">=</span> timeouts<span class="token punctuation">.</span><span class="token function">poll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>timeout <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>timeout<span class="token punctuation">.</span><span class="token function">isCancelled</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                unprocessedTimeouts<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>timeout<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment">// 处理取消的任务</span>
+        <span class="token function">processCancelledTasks</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">transferTimeoutsToBuckets</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// transfer only max. 100000 timeouts per tick to prevent a thread to stale the workerThread when it just</span>
+        <span class="token comment">// adds new timeouts in a loop.</span>
+        <span class="token comment">// 便利未处理阻塞队列中的任务，最多取出100000万条</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">100000</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">HashedWheelTimeout</span> timeout <span class="token operator">=</span> timeouts<span class="token punctuation">.</span><span class="token function">poll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>timeout <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment">// all processed</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token comment">// 任务被取消，跳过该任务</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>timeout<span class="token punctuation">.</span><span class="token function">state</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token class-name">HashedWheelTimeout</span><span class="token punctuation">.</span><span class="token constant">ST_CANCELLED</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment">// Was cancelled in the meantime.</span>
+                <span class="token keyword">continue</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token comment">// 计算任务需要等待多少个刻度</span>
+            <span class="token keyword">long</span> calculated <span class="token operator">=</span> timeout<span class="token punctuation">.</span>deadline <span class="token operator">/</span> tickDuration<span class="token punctuation">;</span>
+            <span class="token comment">// 计算任务执行的轮次</span>
+            timeout<span class="token punctuation">.</span>remainingRounds <span class="token operator">=</span> <span class="token punctuation">(</span>calculated <span class="token operator">-</span> tick<span class="token punctuation">)</span> <span class="token operator">/</span> wheel<span class="token punctuation">.</span>length<span class="token punctuation">;</span>
+            <span class="token comment">// 计算任务所在桶的下标</span>
+            <span class="token keyword">final</span> <span class="token keyword">long</span> ticks <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>calculated<span class="token punctuation">,</span> tick<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// Ensure we don't schedule for past.</span>
+            <span class="token keyword">int</span> stopIndex <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>ticks <span class="token operator">&amp;</span> mask<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment">// 将任务加入桶中，桶中的任务还是个双向队列</span>
+            <span class="token class-name">HashedWheelBucket</span> bucket <span class="token operator">=</span> wheel<span class="token punctuation">[</span>stopIndex<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            bucket<span class="token punctuation">.</span><span class="token function">addTimeout</span><span class="token punctuation">(</span>timeout<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">processCancelledTasks</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token punctuation">;</span><span class="token punctuation">;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token class-name">HashedWheelTimeout</span> timeout <span class="token operator">=</span> cancelledTimeouts<span class="token punctuation">.</span><span class="token function">poll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>timeout <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment">// all processed</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                <span class="token comment">// 将任务移除</span>
+                timeout<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Throwable</span> t<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>logger<span class="token punctuation">.</span><span class="token function">isWarnEnabled</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    logger<span class="token punctuation">.</span><span class="token function">warn</span><span class="token punctuation">(</span><span class="token string">&quot;An exception was thrown while process a cancellation task&quot;</span><span class="token punctuation">,</span> t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * calculate goal nanoTime from startTime and current tick number,
+     * then wait until that goal has been reached.
+     * @return Long.MIN_VALUE if received a shutdown request,
+     * current time otherwise (with Long.MIN_VALUE changed by +1)
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">long</span> <span class="token function">waitForNextTick</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 计算进入下一个刻度需要的时间</span>
+        <span class="token keyword">long</span> deadline <span class="token operator">=</span> tickDuration <span class="token operator">*</span> <span class="token punctuation">(</span>tick <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token punctuation">;</span><span class="token punctuation">;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// 当前已启动时间</span>
+            <span class="token keyword">final</span> <span class="token keyword">long</span> currentTime <span class="token operator">=</span> <span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">nanoTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> startTime<span class="token punctuation">;</span>
+            <span class="token comment">// 计算这之间的差额</span>
+            <span class="token keyword">long</span> sleepTimeMs <span class="token operator">=</span> <span class="token punctuation">(</span>deadline <span class="token operator">-</span> currentTime <span class="token operator">+</span> <span class="token number">999999</span><span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">1000000</span><span class="token punctuation">;</span>
+            <span class="token comment">// 小于0代表已满足进入下一刻度的条件</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>sleepTimeMs <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>currentTime <span class="token operator">==</span> <span class="token class-name">Long</span><span class="token punctuation">.</span><span class="token constant">MIN_VALUE</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">return</span> <span class="token operator">-</span><span class="token class-name">Long</span><span class="token punctuation">.</span><span class="token constant">MAX_VALUE</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                    <span class="token comment">// 返回 当前已启动时间</span>
+                    <span class="token keyword">return</span> currentTime<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token comment">// Check if we run on windows, as if thats the case we will need</span>
+            <span class="token comment">// to round the sleepTime as workaround for a bug that only affect</span>
+            <span class="token comment">// the JVM if it runs on windows.</span>
+            <span class="token comment">//</span>
+            <span class="token comment">// See https://github.com/netty/netty/issues/356</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token class-name">PlatformDependent</span><span class="token punctuation">.</span><span class="token function">isWindows</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                sleepTimeMs <span class="token operator">=</span> sleepTimeMs <span class="token operator">/</span> <span class="token number">10</span> <span class="token operator">*</span> <span class="token number">10</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>sleepTimeMs <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    sleepTimeMs <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token comment">// 休眠一会，等待进入下一刻度的时间到来</span>
+            <span class="token keyword">try</span> <span class="token punctuation">{</span>
+                <span class="token class-name">Thread</span><span class="token punctuation">.</span><span class="token function">sleep</span><span class="token punctuation">(</span>sleepTimeMs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">InterruptedException</span> ignored<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token constant">WORKER_STATE_UPDATER</span><span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token class-name">HashedWheelTimer</span><span class="token punctuation">.</span><span class="token keyword">this</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token constant">WORKER_STATE_SHUTDOWN</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">return</span> <span class="token class-name">Long</span><span class="token punctuation">.</span><span class="token constant">MIN_VALUE</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Timeout</span><span class="token punctuation">&gt;</span></span> <span class="token function">unprocessedTimeouts</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token class-name">Collections</span><span class="token punctuation">.</span><span class="token function">unmodifiableSet</span><span class="token punctuation">(</span>unprocessedTimeouts<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h4 id="任务到期执行"><a href="#任务到期执行" class="header-anchor">#</a> 任务到期执行</h4> <div class="language-java extra-class"><pre class="language-java"><code>
+<span class="token comment">/**
+ * HashedWheelBucket#expireTimeouts
+ * Expire all {@link HashedWheelTimeout}s for the given {@code deadline}.
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">expireTimeouts</span><span class="token punctuation">(</span><span class="token keyword">long</span> deadline<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 获取桶中的头节点</span>
+    <span class="token class-name">HashedWheelTimeout</span> timeout <span class="token operator">=</span> head<span class="token punctuation">;</span>
+
+    <span class="token comment">// process all timeouts</span>
+    <span class="token comment">// 桶中有任务</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>timeout <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 提前获取下一个任务</span>
+        <span class="token class-name">HashedWheelTimeout</span> next <span class="token operator">=</span> timeout<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
+        <span class="token comment">// 任务执行轮次小于等于0代表可以执行了</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>timeout<span class="token punctuation">.</span>remainingRounds <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// 移除当前任务</span>
+            next <span class="token operator">=</span> <span class="token function">remove</span><span class="token punctuation">(</span>timeout<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// 任务到期了可以执行</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>timeout<span class="token punctuation">.</span>deadline <span class="token operator">&lt;=</span> deadline<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                timeout<span class="token punctuation">.</span><span class="token function">expire</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                <span class="token comment">// The timeout was placed into a wrong slot. This should never happen.</span>
+                <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalStateException</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span>
+                        <span class="token string">&quot;timeout.deadline (%d) &gt; deadline (%d)&quot;</span><span class="token punctuation">,</span> timeout<span class="token punctuation">.</span>deadline<span class="token punctuation">,</span> deadline<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token comment">// 任务取消直接移除任务</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>timeout<span class="token punctuation">.</span><span class="token function">isCancelled</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            next <span class="token operator">=</span> <span class="token function">remove</span><span class="token punctuation">(</span>timeout<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token comment">// 将任务轮次减1</span>
+            timeout<span class="token punctuation">.</span>remainingRounds <span class="token operator">--</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment">// 切换任务指针</span>
+        timeout <span class="token operator">=</span> next<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/main/源码分析/SlidingTimeWindowMetrics.html">
+        SlidingTimeWindowMetrics
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.9dffee2a.js" defer></script><script src="/assets/js/2.63a1ef1f.js" defer></script><script src="/assets/js/1.0f3fe6d1.js" defer></script><script src="/assets/js/83.60b8c351.js" defer></script>
+  </body>
+</html>
